@@ -1,0 +1,11 @@
+# SIMULATED - not captured from real hardware. Assumed 2x NVIDIA RTX A5000 (24GB, PCIe). Provisional; replace with a real lab-box capture.
+$ nvidia-smi topo -m
+        GPU0    GPU1    CPU Affinity    NUMA Affinity
+GPU0     X      PHB     0-15            0
+GPU1    PHB      X      0-15            0
+
+Legend:
+  X   = Self
+  PHB = Connection traversing PCIe as well as a PCIe Host Bridge (no NVLink)
+
+# Note: PHB (PCIe host bridge), NOT NVLink -> inter-GPU bandwidth is PCIe-bound.

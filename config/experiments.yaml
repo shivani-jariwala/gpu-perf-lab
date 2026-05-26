@@ -1,0 +1,91 @@
+# Distributed GPU Performance Lab — experiment definition
+# =============================================================================
+# The MODEL and DATASET are held FIXED across every run. The only things that
+# vary are the number of GPUs and the batch size (driven by scaling_mode).
+# That is what makes the resume bullet honest: "compares throughput and scaling
+# efficiency across GPU configurations with the model and dataset fixed."
+#
+# NOTE ON HARDWARE: the numbers here are sized to an ASSUMED 2x 24 GB GPU node
+# (RTX A5000 / 3090-class). Confirm the real lab-box GPUs and re-baseline any
+# value marked "provisional".
+
+model:
+  name: resnet50            # recognizable standard benchmark; comm-heavy enough to show DDP overhead
+
+dataset:
+  name: synthetic-imagenet  # generated on-device: no download, deterministic, and lets us
+  image_size: 224           # deliberately construct an input-pipeline-bound case
+  channels: 3
+  num_classes: 1000
+
+precision: amp              # fp32 | amp (mixed precision) | tf32
+
+# Assumed hardware — used only to size SIMULATED fixtures. CONFIRM + re-baseline.
+hardware:
+  gpu_model: "NVIDIA RTX A5000 (24GB)"   # assumed hardware — confirm and re-baseline
+  gpu_count: 2
+  vram_gb: 24
+  interconnect: "PCIe"      # assumed; confirm whether NVLink bridge is present (changes busbw)
+
+run:
+  steps: 50                 # measured steps per run (after warmup)
+  warmup_steps: 10          # discarded: lets clocks/allocator/cudnn autotune settle
+
+# --- The experiment matrix ----------------------------------------------------
+# strong: global batch FIXED, split across GPUs   -> measures SPEEDUP
+# weak:   per-GPU batch FIXED, global grows w/ N   -> measures EFFICIENCY
+# single: the 1-GPU baseline both comparisons use
+experiments:
+  - label: baseline-1gpu
+    scaling_mode: single
+    num_gpus: 1
+    per_gpu_batch_size: 128
+
+  - label: strong-1gpu
+    scaling_mode: strong
+    num_gpus: 1
+    global_batch_size: 256
+
+  - label: strong-2gpu
+    scaling_mode: strong
+    num_gpus: 2
+    global_batch_size: 256      # per_gpu derived = 128
+
+  - label: weak-1gpu
+    scaling_mode: weak
+    num_gpus: 1
+    per_gpu_batch_size: 128
+
+  - label: weak-2gpu
+    scaling_mode: weak
+    num_gpus: 2
+    per_gpu_batch_size: 128     # global derived = 256
+
+# --- Telemetry ----------------------------------------------------------------
+telemetry:
+  source: dcgm                 # dcgm (primary, consistent w/ projects 1 & 2) | pynvml (fallback)
+  sample_interval_ms: 200
+  dcgm_fields:                 # DCGM field ids we sample during a run
+    - gr_active                # SM/graphics active
+    - sm_active
+    - mem_copy_util
+    - fb_used
+    - power_usage
+
+# --- NCCL microbenchmarks (nccl-tests) ---------------------------------------
+nccl:
+  ops: [all_reduce, all_gather]
+  min_bytes: "8"               # sweep range passed to *_perf -b/-e
+  max_bytes: "512M"
+  step_factor: 2
+  # busbw floor is PROVISIONAL — derived from SIMULATED data sized to assumed
+  # 24 GB PCIe GPUs. Replace with a real measured floor after a lab-box run.
+  min_busbw_gbps: 10.0         # provisional — replace with real measurement
+
+# --- Bottleneck-classifier thresholds ----------------------------------------
+# All PROVISIONAL — tuned against SIMULATED fixtures; re-tune on real data.
+thresholds:
+  comm_bound_share: 0.30       # comm_ms / step >= 30% -> likely communication-bound
+  input_bound_share: 0.25      # dataloader_ms / step >= 25% -> likely input-pipeline-bound
+  compute_bound_util: 90.0     # sustained GPU util >= 90% with low comm/input -> compute-bound
+  memory_bound_mem_util: 70.0  # high memory-bandwidth util -> memory-bound

@@ -1,0 +1,13 @@
+# SIMULATED - not captured from real hardware. Assumed 2x NVIDIA RTX A5000 (24GB, PCIe). Provisional; replace with a real lab-box capture.
+$ nvidia-smi
+Sun Sep 13 00:00:00 2026
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 535.161.08   Driver Version: 535.161.08   CUDA Version: 12.2      |
+|-----------------------------------------+----------------------+------------+
+|   0  NVIDIA RTX A5000     Off | 00000000:01:00.0 Off |          Off |
+|   1  NVIDIA RTX A5000     Off | 00000000:02:00.0 Off |          Off |
++-----------------------------------------------------------------------------+
+$ python -c "import torch;print(torch.__version__, torch.version.cuda, torch.cuda.device_count())"
+2.4.0  12.2  2
+$ torchrun --version
+torch-2.4.0

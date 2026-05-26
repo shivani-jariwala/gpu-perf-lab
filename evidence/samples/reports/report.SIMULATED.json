@@ -1,0 +1,844 @@
+{
+  "_simulated": true,
+  "_note": "SIMULATED - not captured from real hardware. Assumed 2x NVIDIA RTX A5000 (24GB, PCIe). Provisional; replace with a real lab-box capture.",
+  "generated_at": "2026-09-14T21:41:44.637074+00:00",
+  "simulated": true,
+  "runs": [
+    {
+      "run_id": "train-baseline-1gpu-SIM",
+      "config": {
+        "model": "resnet50",
+        "dataset": "synthetic-imagenet",
+        "num_gpus": 1,
+        "global_batch_size": 128,
+        "per_gpu_batch_size": 128,
+        "scaling_mode": "single",
+        "precision": "amp",
+        "steps": 50,
+        "warmup_steps": 10,
+        "backend": "torchrun",
+        "label": "baseline-1gpu"
+      },
+      "started_at": "2026-09-13T00:00:00+00:00",
+      "step_time": {
+        "mean_ms": 170.667,
+        "median_ms": 170.667,
+        "p90_ms": 179.2,
+        "std_ms": 3.413,
+        "count": 50
+      },
+      "throughput_samples_per_s": 750,
+      "breakdown": {
+        "compute_ms": 165,
+        "dataloader_ms": 5,
+        "comm_ms": 0
+      },
+      "telemetry": [
+        {
+          "gpu_index": 0,
+          "gpu_util_pct": 96,
+          "sm_active_pct": 91,
+          "mem_used_mb": 9000,
+          "mem_total_mb": 24564.0,
+          "mem_util_pct": 55,
+          "power_w": 210.0,
+          "power_limit_w": 230.0,
+          "sample_count": 50
+        }
+      ],
+      "nccl": [],
+      "bottleneck": "compute",
+      "bottleneck_reason": "GPU util 96% (>= 90%), comm 0% / input 3% low; compute-bound",
+      "hostname": "",
+      "gpu_model": "NVIDIA RTX A5000 (24GB)",
+      "simulated": true,
+      "notes": "SIMULATED - not captured from real hardware. Assumed 2x NVIDIA RTX A5000 (24GB, PCIe). Provisional; replace with a real lab-box capture."
+    },
+    {
+      "run_id": "train-strong-1gpu-SIM",
+      "config": {
+        "model": "resnet50",
+        "dataset": "synthetic-imagenet",
+        "num_gpus": 1,
+        "global_batch_size": 256,
+        "per_gpu_batch_size": 256,
+        "scaling_mode": "strong",
+        "precision": "amp",
+        "steps": 50,
+        "warmup_steps": 10,
+        "backend": "torchrun",
+        "label": "strong-1gpu"
+      },
+      "started_at": "2026-09-13T00:00:00+00:00",
+      "step_time": {
+        "mean_ms": 342.246,
+        "median_ms": 342.246,
+        "p90_ms": 359.358,
+        "std_ms": 6.845,
+        "count": 50
+      },
+      "throughput_samples_per_s": 748,
+      "breakdown": {
+        "compute_ms": 335,
+        "dataloader_ms": 7,
+        "comm_ms": 0
+      },
+      "telemetry": [
+        {
+          "gpu_index": 0,
+          "gpu_util_pct": 96,
+          "sm_active_pct": 91,
+          "mem_used_mb": 15000,
+          "mem_total_mb": 24564.0,
+          "mem_util_pct": 58,
+          "power_w": 210.0,
+          "power_limit_w": 230.0,
+          "sample_count": 50
+        }
+      ],
+      "nccl": [],
+      "bottleneck": "compute",
+      "bottleneck_reason": "GPU util 96% (>= 90%), comm 0% / input 2% low; compute-bound",
+      "hostname": "",
+      "gpu_model": "NVIDIA RTX A5000 (24GB)",
+      "simulated": true,
+      "notes": "SIMULATED - not captured from real hardware. Assumed 2x NVIDIA RTX A5000 (24GB, PCIe). Provisional; replace with a real lab-box capture."
+    },
+    {
+      "run_id": "train-strong-2gpu-SIM",
+      "config": {
+        "model": "resnet50",
+        "dataset": "synthetic-imagenet",
+        "num_gpus": 2,
+        "global_batch_size": 256,
+        "per_gpu_batch_size": 128,
+        "scaling_mode": "strong",
+        "precision": "amp",
+        "steps": 50,
+        "warmup_steps": 10,
+        "backend": "torchrun",
+        "label": "strong-2gpu"
+      },
+      "started_at": "2026-09-13T00:00:00+00:00",
+      "step_time": {
+        "mean_ms": 186.861,
+        "median_ms": 186.861,
+        "p90_ms": 196.204,
+        "std_ms": 3.737,
+        "count": 50
+      },
+      "throughput_samples_per_s": 1370,
+      "breakdown": {
+        "compute_ms": 165,
+        "dataloader_ms": 5,
+        "comm_ms": 17
+      },
+      "telemetry": [
+        {
+          "gpu_index": 0,
+          "gpu_util_pct": 93,
+          "sm_active_pct": 88,
+          "mem_used_mb": 9000,
+          "mem_total_mb": 24564.0,
+          "mem_util_pct": 57,
+          "power_w": 210.0,
+          "power_limit_w": 230.0,
+          "sample_count": 50
+        },
+        {
+          "gpu_index": 1,
+          "gpu_util_pct": 93,
+          "sm_active_pct": 88,
+          "mem_used_mb": 9000,
+          "mem_total_mb": 24564.0,
+          "mem_util_pct": 57,
+          "power_w": 210.0,
+          "power_limit_w": 230.0,
+          "sample_count": 50
+        }
+      ],
+      "nccl": [],
+      "bottleneck": "compute",
+      "bottleneck_reason": "GPU util 93% (>= 90%), comm 9% / input 3% low; compute-bound",
+      "hostname": "",
+      "gpu_model": "NVIDIA RTX A5000 (24GB)",
+      "simulated": true,
+      "notes": "SIMULATED - not captured from real hardware. Assumed 2x NVIDIA RTX A5000 (24GB, PCIe). Provisional; replace with a real lab-box capture."
+    },
+    {
+      "run_id": "train-weak-1gpu-SIM",
+      "config": {
+        "model": "resnet50",
+        "dataset": "synthetic-imagenet",
+        "num_gpus": 1,
+        "global_batch_size": 128,
+        "per_gpu_batch_size": 128,
+        "scaling_mode": "weak",
+        "precision": "amp",
+        "steps": 50,
+        "warmup_steps": 10,
+        "backend": "torchrun",
+        "label": "weak-1gpu"
+      },
+      "started_at": "2026-09-13T00:00:00+00:00",
+      "step_time": {
+        "mean_ms": 170.667,
+        "median_ms": 170.667,
+        "p90_ms": 179.2,
+        "std_ms": 3.413,
+        "count": 50
+      },
+      "throughput_samples_per_s": 750,
+      "breakdown": {
+        "compute_ms": 165,
+        "dataloader_ms": 5,
+        "comm_ms": 0
+      },
+      "telemetry": [
+        {
+          "gpu_index": 0,
+          "gpu_util_pct": 96,
+          "sm_active_pct": 91,
+          "mem_used_mb": 9000,
+          "mem_total_mb": 24564.0,
+          "mem_util_pct": 55,
+          "power_w": 210.0,
+          "power_limit_w": 230.0,
+          "sample_count": 50
+        }
+      ],
+      "nccl": [],
+      "bottleneck": "compute",
+      "bottleneck_reason": "GPU util 96% (>= 90%), comm 0% / input 3% low; compute-bound",
+      "hostname": "",
+      "gpu_model": "NVIDIA RTX A5000 (24GB)",
+      "simulated": true,
+      "notes": "SIMULATED - not captured from real hardware. Assumed 2x NVIDIA RTX A5000 (24GB, PCIe). Provisional; replace with a real lab-box capture."
+    },
+    {
+      "run_id": "train-weak-2gpu-SIM",
+      "config": {
+        "model": "resnet50",
+        "dataset": "synthetic-imagenet",
+        "num_gpus": 2,
+        "global_batch_size": 256,
+        "per_gpu_batch_size": 128,
+        "scaling_mode": "weak",
+        "precision": "amp",
+        "steps": 50,
+        "warmup_steps": 10,
+        "backend": "torchrun",
+        "label": "weak-2gpu"
+      },
+      "started_at": "2026-09-13T00:00:00+00:00",
+      "step_time": {
+        "mean_ms": 182.857,
+        "median_ms": 182.857,
+        "p90_ms": 192.0,
+        "std_ms": 3.657,
+        "count": 50
+      },
+      "throughput_samples_per_s": 1400,
+      "breakdown": {
+        "compute_ms": 165,
+        "dataloader_ms": 5,
+        "comm_ms": 13
+      },
+      "telemetry": [
+        {
+          "gpu_index": 0,
+          "gpu_util_pct": 94,
+          "sm_active_pct": 89,
+          "mem_used_mb": 9000,
+          "mem_total_mb": 24564.0,
+          "mem_util_pct": 56,
+          "power_w": 210.0,
+          "power_limit_w": 230.0,
+          "sample_count": 50
+        },
+        {
+          "gpu_index": 1,
+          "gpu_util_pct": 94,
+          "sm_active_pct": 89,
+          "mem_used_mb": 9000,
+          "mem_total_mb": 24564.0,
+          "mem_util_pct": 56,
+          "power_w": 210.0,
+          "power_limit_w": 230.0,
+          "sample_count": 50
+        }
+      ],
+      "nccl": [],
+      "bottleneck": "compute",
+      "bottleneck_reason": "GPU util 94% (>= 90%), comm 7% / input 3% low; compute-bound",
+      "hostname": "",
+      "gpu_model": "NVIDIA RTX A5000 (24GB)",
+      "simulated": true,
+      "notes": "SIMULATED - not captured from real hardware. Assumed 2x NVIDIA RTX A5000 (24GB, PCIe). Provisional; replace with a real lab-box capture."
+    }
+  ],
+  "comparisons": [
+    {
+      "title": "Strong scaling (model+dataset fixed)",
+      "scaling_mode": "strong",
+      "simulated": true,
+      "baseline_run_id": "train-strong-1gpu-SIM",
+      "scaling": [
+        {
+          "num_gpus": 1,
+          "global_batch_size": 256,
+          "per_gpu_batch_size": 256,
+          "throughput_samples_per_s": 748,
+          "speedup": 1.0,
+          "efficiency": 1.0,
+          "bottleneck": "compute"
+        },
+        {
+          "num_gpus": 2,
+          "global_batch_size": 256,
+          "per_gpu_batch_size": 128,
+          "throughput_samples_per_s": 1370,
+          "speedup": 1.832,
+          "efficiency": 0.916,
+          "bottleneck": "compute"
+        }
+      ],
+      "runs": [
+        {
+          "run_id": "train-strong-1gpu-SIM",
+          "config": {
+            "model": "resnet50",
+            "dataset": "synthetic-imagenet",
+            "num_gpus": 1,
+            "global_batch_size": 256,
+            "per_gpu_batch_size": 256,
+            "scaling_mode": "strong",
+            "precision": "amp",
+            "steps": 50,
+            "warmup_steps": 10,
+            "backend": "torchrun",
+            "label": "strong-1gpu"
+          },
+          "started_at": "2026-09-13T00:00:00+00:00",
+          "step_time": {
+            "mean_ms": 342.246,
+            "median_ms": 342.246,
+            "p90_ms": 359.358,
+            "std_ms": 6.845,
+            "count": 50
+          },
+          "throughput_samples_per_s": 748,
+          "breakdown": {
+            "compute_ms": 335,
+            "dataloader_ms": 7,
+            "comm_ms": 0
+          },
+          "telemetry": [
+            {
+              "gpu_index": 0,
+              "gpu_util_pct": 96,
+              "sm_active_pct": 91,
+              "mem_used_mb": 15000,
+              "mem_total_mb": 24564.0,
+              "mem_util_pct": 58,
+              "power_w": 210.0,
+              "power_limit_w": 230.0,
+              "sample_count": 50
+            }
+          ],
+          "nccl": [],
+          "bottleneck": "compute",
+          "bottleneck_reason": "GPU util 96% (>= 90%), comm 0% / input 2% low; compute-bound",
+          "hostname": "",
+          "gpu_model": "NVIDIA RTX A5000 (24GB)",
+          "simulated": true,
+          "notes": "SIMULATED - not captured from real hardware. Assumed 2x NVIDIA RTX A5000 (24GB, PCIe). Provisional; replace with a real lab-box capture."
+        },
+        {
+          "run_id": "train-strong-2gpu-SIM",
+          "config": {
+            "model": "resnet50",
+            "dataset": "synthetic-imagenet",
+            "num_gpus": 2,
+            "global_batch_size": 256,
+            "per_gpu_batch_size": 128,
+            "scaling_mode": "strong",
+            "precision": "amp",
+            "steps": 50,
+            "warmup_steps": 10,
+            "backend": "torchrun",
+            "label": "strong-2gpu"
+          },
+          "started_at": "2026-09-13T00:00:00+00:00",
+          "step_time": {
+            "mean_ms": 186.861,
+            "median_ms": 186.861,
+            "p90_ms": 196.204,
+            "std_ms": 3.737,
+            "count": 50
+          },
+          "throughput_samples_per_s": 1370,
+          "breakdown": {
+            "compute_ms": 165,
+            "dataloader_ms": 5,
+            "comm_ms": 17
+          },
+          "telemetry": [
+            {
+              "gpu_index": 0,
+              "gpu_util_pct": 93,
+              "sm_active_pct": 88,
+              "mem_used_mb": 9000,
+              "mem_total_mb": 24564.0,
+              "mem_util_pct": 57,
+              "power_w": 210.0,
+              "power_limit_w": 230.0,
+              "sample_count": 50
+            },
+            {
+              "gpu_index": 1,
+              "gpu_util_pct": 93,
+              "sm_active_pct": 88,
+              "mem_used_mb": 9000,
+              "mem_total_mb": 24564.0,
+              "mem_util_pct": 57,
+              "power_w": 210.0,
+              "power_limit_w": 230.0,
+              "sample_count": 50
+            }
+          ],
+          "nccl": [],
+          "bottleneck": "compute",
+          "bottleneck_reason": "GPU util 93% (>= 90%), comm 9% / input 3% low; compute-bound",
+          "hostname": "",
+          "gpu_model": "NVIDIA RTX A5000 (24GB)",
+          "simulated": true,
+          "notes": "SIMULATED - not captured from real hardware. Assumed 2x NVIDIA RTX A5000 (24GB, PCIe). Provisional; replace with a real lab-box capture."
+        }
+      ]
+    },
+    {
+      "title": "Weak scaling (model+dataset fixed)",
+      "scaling_mode": "weak",
+      "simulated": true,
+      "baseline_run_id": "train-weak-1gpu-SIM",
+      "scaling": [
+        {
+          "num_gpus": 1,
+          "global_batch_size": 128,
+          "per_gpu_batch_size": 128,
+          "throughput_samples_per_s": 750,
+          "speedup": 1.0,
+          "efficiency": 1.0,
+          "bottleneck": "compute"
+        },
+        {
+          "num_gpus": 2,
+          "global_batch_size": 256,
+          "per_gpu_batch_size": 128,
+          "throughput_samples_per_s": 1400,
+          "speedup": 1.867,
+          "efficiency": 0.933,
+          "bottleneck": "compute"
+        }
+      ],
+      "runs": [
+        {
+          "run_id": "train-weak-1gpu-SIM",
+          "config": {
+            "model": "resnet50",
+            "dataset": "synthetic-imagenet",
+            "num_gpus": 1,
+            "global_batch_size": 128,
+            "per_gpu_batch_size": 128,
+            "scaling_mode": "weak",
+            "precision": "amp",
+            "steps": 50,
+            "warmup_steps": 10,
+            "backend": "torchrun",
+            "label": "weak-1gpu"
+          },
+          "started_at": "2026-09-13T00:00:00+00:00",
+          "step_time": {
+            "mean_ms": 170.667,
+            "median_ms": 170.667,
+            "p90_ms": 179.2,
+            "std_ms": 3.413,
+            "count": 50
+          },
+          "throughput_samples_per_s": 750,
+          "breakdown": {
+            "compute_ms": 165,
+            "dataloader_ms": 5,
+            "comm_ms": 0
+          },
+          "telemetry": [
+            {
+              "gpu_index": 0,
+              "gpu_util_pct": 96,
+              "sm_active_pct": 91,
+              "mem_used_mb": 9000,
+              "mem_total_mb": 24564.0,
+              "mem_util_pct": 55,
+              "power_w": 210.0,
+              "power_limit_w": 230.0,
+              "sample_count": 50
+            }
+          ],
+          "nccl": [],
+          "bottleneck": "compute",
+          "bottleneck_reason": "GPU util 96% (>= 90%), comm 0% / input 3% low; compute-bound",
+          "hostname": "",
+          "gpu_model": "NVIDIA RTX A5000 (24GB)",
+          "simulated": true,
+          "notes": "SIMULATED - not captured from real hardware. Assumed 2x NVIDIA RTX A5000 (24GB, PCIe). Provisional; replace with a real lab-box capture."
+        },
+        {
+          "run_id": "train-weak-2gpu-SIM",
+          "config": {
+            "model": "resnet50",
+            "dataset": "synthetic-imagenet",
+            "num_gpus": 2,
+            "global_batch_size": 256,
+            "per_gpu_batch_size": 128,
+            "scaling_mode": "weak",
+            "precision": "amp",
+            "steps": 50,
+            "warmup_steps": 10,
+            "backend": "torchrun",
+            "label": "weak-2gpu"
+          },
+          "started_at": "2026-09-13T00:00:00+00:00",
+          "step_time": {
+            "mean_ms": 182.857,
+            "median_ms": 182.857,
+            "p90_ms": 192.0,
+            "std_ms": 3.657,
+            "count": 50
+          },
+          "throughput_samples_per_s": 1400,
+          "breakdown": {
+            "compute_ms": 165,
+            "dataloader_ms": 5,
+            "comm_ms": 13
+          },
+          "telemetry": [
+            {
+              "gpu_index": 0,
+              "gpu_util_pct": 94,
+              "sm_active_pct": 89,
+              "mem_used_mb": 9000,
+              "mem_total_mb": 24564.0,
+              "mem_util_pct": 56,
+              "power_w": 210.0,
+              "power_limit_w": 230.0,
+              "sample_count": 50
+            },
+            {
+              "gpu_index": 1,
+              "gpu_util_pct": 94,
+              "sm_active_pct": 89,
+              "mem_used_mb": 9000,
+              "mem_total_mb": 24564.0,
+              "mem_util_pct": 56,
+              "power_w": 210.0,
+              "power_limit_w": 230.0,
+              "sample_count": 50
+            }
+          ],
+          "nccl": [],
+          "bottleneck": "compute",
+          "bottleneck_reason": "GPU util 94% (>= 90%), comm 7% / input 3% low; compute-bound",
+          "hostname": "",
+          "gpu_model": "NVIDIA RTX A5000 (24GB)",
+          "simulated": true,
+          "notes": "SIMULATED - not captured from real hardware. Assumed 2x NVIDIA RTX A5000 (24GB, PCIe). Provisional; replace with a real lab-box capture."
+        }
+      ]
+    }
+  ],
+  "nccl": [
+    {
+      "run_id": "nccl-20260914-214144",
+      "config": {
+        "model": "resnet50",
+        "dataset": "synthetic-imagenet",
+        "num_gpus": 2,
+        "global_batch_size": 0,
+        "per_gpu_batch_size": 0,
+        "scaling_mode": "single",
+        "precision": "amp",
+        "steps": 0,
+        "warmup_steps": 0,
+        "backend": "unknown",
+        "label": "nccl-all_reduce-2gpu"
+      },
+      "started_at": "2026-09-14T21:41:44.634323+00:00",
+      "step_time": {
+        "mean_ms": 0.0,
+        "median_ms": 0.0,
+        "p90_ms": 0.0,
+        "std_ms": 0.0,
+        "count": 0
+      },
+      "throughput_samples_per_s": 0.0,
+      "breakdown": {
+        "compute_ms": 0.0,
+        "dataloader_ms": 0.0,
+        "comm_ms": 0.0
+      },
+      "telemetry": [],
+      "nccl": [
+        {
+          "op": "all_reduce",
+          "size_bytes": 8,
+          "time_us": 13.0,
+          "algbw_gbps": 0.0,
+          "busbw_gbps": 0.0,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 16,
+          "time_us": 13.0,
+          "algbw_gbps": 0.0,
+          "busbw_gbps": 0.0,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 32,
+          "time_us": 13.0,
+          "algbw_gbps": 0.0,
+          "busbw_gbps": 0.0,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 64,
+          "time_us": 13.0,
+          "algbw_gbps": 0.0,
+          "busbw_gbps": 0.0,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 128,
+          "time_us": 13.0,
+          "algbw_gbps": 0.01,
+          "busbw_gbps": 0.01,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 256,
+          "time_us": 13.0,
+          "algbw_gbps": 0.02,
+          "busbw_gbps": 0.02,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 512,
+          "time_us": 13.0,
+          "algbw_gbps": 0.04,
+          "busbw_gbps": 0.04,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 1024,
+          "time_us": 13.0,
+          "algbw_gbps": 0.08,
+          "busbw_gbps": 0.08,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 2048,
+          "time_us": 13.0,
+          "algbw_gbps": 0.16,
+          "busbw_gbps": 0.16,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 4096,
+          "time_us": 13.0,
+          "algbw_gbps": 0.32,
+          "busbw_gbps": 0.32,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 8192,
+          "time_us": 13.0,
+          "algbw_gbps": 0.63,
+          "busbw_gbps": 0.63,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 16384,
+          "time_us": 13.0,
+          "algbw_gbps": 1.26,
+          "busbw_gbps": 1.26,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 32768,
+          "time_us": 13.0,
+          "algbw_gbps": 2.52,
+          "busbw_gbps": 2.52,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 65536,
+          "time_us": 13.0,
+          "algbw_gbps": 5.04,
+          "busbw_gbps": 5.04,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 131072,
+          "time_us": 13.0,
+          "algbw_gbps": 10.08,
+          "busbw_gbps": 10.08,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 262144,
+          "time_us": 22.6,
+          "algbw_gbps": 11.6,
+          "busbw_gbps": 11.6,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 524288,
+          "time_us": 45.2,
+          "algbw_gbps": 11.6,
+          "busbw_gbps": 11.6,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 1048576,
+          "time_us": 90.39,
+          "algbw_gbps": 11.6,
+          "busbw_gbps": 11.6,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 2097152,
+          "time_us": 180.79,
+          "algbw_gbps": 11.6,
+          "busbw_gbps": 11.6,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 4194304,
+          "time_us": 361.58,
+          "algbw_gbps": 11.6,
+          "busbw_gbps": 11.6,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 8388608,
+          "time_us": 723.16,
+          "algbw_gbps": 11.6,
+          "busbw_gbps": 11.6,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 16777216,
+          "time_us": 1446.31,
+          "algbw_gbps": 11.6,
+          "busbw_gbps": 11.6,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 33554432,
+          "time_us": 2892.62,
+          "algbw_gbps": 11.6,
+          "busbw_gbps": 11.6,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 67108864,
+          "time_us": 5785.25,
+          "algbw_gbps": 11.6,
+          "busbw_gbps": 11.6,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 134217728,
+          "time_us": 11570.49,
+          "algbw_gbps": 11.6,
+          "busbw_gbps": 11.6,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 268435456,
+          "time_us": 23140.99,
+          "algbw_gbps": 11.6,
+          "busbw_gbps": 11.6,
+          "num_gpus": 2,
+          "wrong_count": 0
+        },
+        {
+          "op": "all_reduce",
+          "size_bytes": 536870912,
+          "time_us": 46281.98,
+          "algbw_gbps": 11.6,
+          "busbw_gbps": 11.6,
+          "num_gpus": 2,
+          "wrong_count": 0
+        }
+      ],
+      "bottleneck": "unknown",
+      "bottleneck_reason": "",
+      "hostname": "Shivanis-MacBook-Air.local",
+      "gpu_model": "NVIDIA RTX A5000 (24GB)",
+      "simulated": true,
+      "notes": "op=all_reduce gpus=2 busbw_factor=1.000 peak_busbw=11.60GB/s avg_busbw=5.9 wrong=0 | parsed_from=nccl-allreduce.SIMULATED.log"
+    }
+  ]
+}

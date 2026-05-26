@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gpu-perf-lab"
+version = "0.1.0"
+description = "Distributed GPU Performance Lab: single-node multi-GPU PyTorch DDP + NCCL microbenchmarks, telemetry correlation, and scaling/comparison reports"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Shivani" }]
+keywords = ["gpu", "nvidia", "pytorch", "ddp", "nccl", "dcgm", "slurm", "benchmark", "scaling"]
+
+# Core dependencies needed from Phase 0 onward. These are laptop-friendly and
+# require NO GPU, so the package installs and the `gpu-perf` CLI runs on a Mac
+# for authoring parsers/reports/fixtures. The heavy, GPU-only libraries
+# (torch, pynvml) are optional extras installed on the lab box / Colab.
+dependencies = [
+    "PyYAML>=6.0,<7.0",
+    "click>=8.1,<9.0",
+]
+
+[project.optional-dependencies]
+# Installed where a real GPU exists (lab box, Colab). torch pulls in the CUDA
+# runtime + NCCL; pynvml is the nvidia-smi/DCGM fallback telemetry source.
+gpu = [
+    "torch>=2.1",
+    "pynvml>=11.5,<12.0",
+]
+# Charting for the comparison reports (Phase 4/5). Kept separate so the core
+# stays tiny; charts can be generated anywhere from collected JSON.
+viz = [
+    "matplotlib>=3.7,<4.0",
+]
+dev = [
+    "pytest>=7.4,<9.0",
+]
+
+[project.scripts]
+# The "real tool" entrypoint: after `pip install -e .` the command
+# `gpu-perf` is available on PATH.
+gpu-perf = "gpu_perf.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+gpu_perf = ["py.typed"]

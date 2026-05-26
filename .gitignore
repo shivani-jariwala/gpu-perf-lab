@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.env
+
+# Test / tooling
+.pytest_cache/
+.mypy_cache/
+.coverage
+
+# OS
+.DS_Store
+
+# Local experiment artifacts that should NOT be committed.
+# NOTE: evidence/samples/ (SIMULATED fixtures) and generated sample reports
+# ARE committed — they are the "proof" surface of the repo. Only raw, bulky
+# local captures are ignored here.
+evidence/logs/*
+!evidence/logs/.gitkeep
+evidence/reports/*
+!evidence/reports/.gitkeep
+evidence/charts/*
+!evidence/charts/.gitkeep
+evidence/screenshots/*
+!evidence/screenshots/.gitkeep

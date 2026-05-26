@@ -1,0 +1,40 @@
+# SIMULATED - not captured from real hardware. Assumed 2x NVIDIA RTX A5000 (24GB, PCIe). Provisional; replace with a real lab-box capture.
+# nThread 1 nGpus 2 minBytes 8 maxBytes 536870912 step: 2(factor) warmup iters: 5 iters: 20 validation: 1
+#
+# Using devices
+#  Rank  0 Pid  1 on gpu-lab01 device  0 [0x01] NVIDIA RTX A5000
+#  Rank  1 Pid  1 on gpu-lab01 device  1 [0x02] NVIDIA RTX A5000
+#
+#                                                              out-of-place                       in-place
+#       size         count      type   redop     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                        (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)
+           8             2     float     sum    13.00    0.00    0.00  0e+00    12.74    0.00    0.00  0e+00
+          16             4     float     sum    13.00    0.00    0.00  0e+00    12.74    0.00    0.00  0e+00
+          32             8     float     sum    13.00    0.00    0.00  0e+00    12.74    0.00    0.00  0e+00
+          64            16     float     sum    13.00    0.00    0.00  0e+00    12.74    0.01    0.01  0e+00
+         128            32     float     sum    13.00    0.01    0.01  0e+00    12.74    0.01    0.01  0e+00
+         256            64     float     sum    13.00    0.02    0.02  0e+00    12.74    0.02    0.02  0e+00
+         512           128     float     sum    13.00    0.04    0.04  0e+00    12.74    0.04    0.04  0e+00
+        1024           256     float     sum    13.00    0.08    0.08  0e+00    12.74    0.08    0.08  0e+00
+        2048           512     float     sum    13.00    0.16    0.16  0e+00    12.74    0.16    0.16  0e+00
+        4096          1024     float     sum    13.00    0.32    0.32  0e+00    12.74    0.32    0.32  0e+00
+        8192          2048     float     sum    13.00    0.63    0.63  0e+00    12.74    0.64    0.64  0e+00
+       16384          4096     float     sum    13.00    1.26    1.26  0e+00    12.74    1.29    1.29  0e+00
+       32768          8192     float     sum    13.00    2.52    2.52  0e+00    12.74    2.57    2.57  0e+00
+       65536         16384     float     sum    13.00    5.04    5.04  0e+00    12.74    5.14    5.14  0e+00
+      131072         32768     float     sum    13.00   10.08   10.08  0e+00    12.74   10.29   10.29  0e+00
+      262144         65536     float     sum    22.60   11.60   11.60  0e+00    22.15   11.84   11.84  0e+00
+      524288        131072     float     sum    45.20   11.60   11.60  0e+00    44.29   11.84   11.84  0e+00
+     1048576        262144     float     sum    90.39   11.60   11.60  0e+00    88.59   11.84   11.84  0e+00
+     2097152        524288     float     sum   180.79   11.60   11.60  0e+00   177.17   11.84   11.84  0e+00
+     4194304       1048576     float     sum   361.58   11.60   11.60  0e+00   354.35   11.84   11.84  0e+00
+     8388608       2097152     float     sum   723.16   11.60   11.60  0e+00   708.69   11.84   11.84  0e+00
+    16777216       4194304     float     sum  1446.31   11.60   11.60  0e+00  1417.39   11.84   11.84  0e+00
+    33554432       8388608     float     sum  2892.62   11.60   11.60  0e+00  2834.77   11.84   11.84  0e+00
+    67108864      16777216     float     sum  5785.25   11.60   11.60  0e+00  5669.54   11.84   11.84  0e+00
+   134217728      33554432     float     sum 11570.49   11.60   11.60  0e+00 11339.08   11.84   11.84  0e+00
+   268435456      67108864     float     sum 23140.99   11.60   11.60  0e+00 22678.17   11.84   11.84  0e+00
+   536870912     134217728     float     sum 46281.98   11.60   11.60  0e+00 45356.34   11.84   11.84  0e+00
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 5.90
+#

@@ -1,0 +1,10 @@
+# SIMULATED - not captured from real hardware. Assumed 2x NVIDIA RTX A5000 (24GB, PCIe). Provisional; replace with a real lab-box capture.
+#Entity   GRACT   SMACT   DRAMA   POWER   FBUSD
+GPU 0    0.930   0.880   0.570   208.4   9000
+GPU 1    0.920   0.870   0.580   207.2   8970
+GPU 0    0.940   0.890   0.560   210.1   9010
+GPU 1    0.930   0.880   0.570   208.9   8980
+GPU 0    0.920   0.870   0.580   207.8   8990
+GPU 1    0.910   0.860   0.590   206.6   8960
+GPU 0    0.930   0.885   0.575   209.0   9005
+GPU 1    0.920   0.875   0.585   207.8   8975

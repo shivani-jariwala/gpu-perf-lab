@@ -1,0 +1,52 @@
+{
+  "_simulated": true,
+  "_note": "SIMULATED - not captured from real hardware. Assumed 2x NVIDIA RTX A5000 (24GB, PCIe). Provisional; replace with a real lab-box capture.",
+  "run_id": "train-strong-1gpu-SIM",
+  "config": {
+    "model": "resnet50",
+    "dataset": "synthetic-imagenet",
+    "num_gpus": 1,
+    "global_batch_size": 256,
+    "per_gpu_batch_size": 256,
+    "scaling_mode": "strong",
+    "precision": "amp",
+    "steps": 50,
+    "warmup_steps": 10,
+    "backend": "torchrun",
+    "label": "strong-1gpu"
+  },
+  "started_at": "2026-09-13T00:00:00+00:00",
+  "step_time": {
+    "mean_ms": 342.246,
+    "median_ms": 342.246,
+    "p90_ms": 359.358,
+    "std_ms": 6.845,
+    "count": 50
+  },
+  "throughput_samples_per_s": 748,
+  "breakdown": {
+    "compute_ms": 335,
+    "dataloader_ms": 7,
+    "comm_ms": 0
+  },
+  "telemetry": [
+    {
+      "gpu_index": 0,
+      "gpu_util_pct": 96,
+      "sm_active_pct": 91,
+      "mem_used_mb": 15000,
+      "mem_total_mb": 24564.0,
+      "mem_util_pct": 58,
+      "power_w": 210.0,
+      "power_limit_w": 230.0,
+      "sample_count": 50
+    }
+  ],
+  "nccl": [],
+  "bottleneck": "unknown",
+  "bottleneck_reason": "",
+  "hostname": "",
+  "gpu_model": "NVIDIA RTX A5000 (24GB)",
+  "simulated": true,
+  "notes": "SIMULATED - not captured from real hardware. Assumed 2x NVIDIA RTX A5000 (24GB, PCIe). Provisional; replace with a real lab-box capture."
+}
